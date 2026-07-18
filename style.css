@@ -122,6 +122,8 @@
 
   .interactive-cloud {
     position: fixed;
+    top: 0;
+    left: 0;
     pointer-events: none;
     will-change: transform;
     z-index: 1; /* Above parent blue sky background */

@@ -470,10 +470,10 @@ function initInteractiveClouds() {
       const displaceX = mouseX * 280 * depth;
       const displaceY = mouseY * 180 * depth;
       
-      // Apply translations using hardware accelerated top/left and translate3d
-      cloud.style.left = `${positionsX[index]}px`;
-      cloud.style.top = `${positionsY[index]}px`;
-      cloud.style.transform = `translate3d(${displaceX}px, ${displaceY}px, 0)`;
+      // Combine drift coordinates and mouse displacement into a single GPU-accelerated translate3d
+      const totalX = positionsX[index] + displaceX;
+      const totalY = positionsY[index] + displaceY;
+      cloud.style.transform = `translate3d(${totalX}px, ${totalY}px, 0)`;
     });
 
     requestAnimationFrame(update);
