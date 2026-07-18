@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AS PORTFOLIO Retro-Futuristic CRT & Chrome Portfolio - Main Controller
+   AS.PORTFOLIO Retro-Futuristic CRT & Chrome Portfolio - Main Controller
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
