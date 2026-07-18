@@ -196,9 +196,13 @@
   }
 
   .nav-item span {
-    display: block;
-    margin-left: 0.3em;
-    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    max-width: 150px;
+    opacity: 1;
+    margin-left: 0.35rem;
+    transition: max-width 0.3s ease-in-out, opacity 0.25s ease-in-out, transform 0.3s ease-in-out, margin 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .nav-item svg {
@@ -223,12 +227,14 @@
   }
 
   .nav-item:hover svg {
-    transform: translateX(1.8em) scale(1.15); /* Removed rotation */
+    transform: scale(1.2); /* Scale only, flex centers the icon automatically */
   }
 
   .nav-item:hover span {
-    transform: translateX(100%);
-    opacity: 0; /* Fade out completely so no letters show */
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(30px);
+    margin-left: 0;
   }
 
   .nav-item:active {
@@ -697,9 +703,13 @@
   }
 
   .btn-card-detail span {
-    display: block;
-    margin-left: 0.3em;
-    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    max-width: 180px;
+    opacity: 1;
+    margin-left: 0.35rem;
+    transition: max-width 0.3s ease-in-out, opacity 0.25s ease-in-out, transform 0.3s ease-in-out, margin 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .btn-card-detail svg {
@@ -721,12 +731,14 @@
   }
 
   .btn-card-detail:hover svg {
-    transform: translateX(2.8em) scale(1.15); /* Removed rotation */
+    transform: scale(1.22); /* Scale only, flex centers the icon automatically */
   }
 
   .btn-card-detail:hover span {
-    transform: translateX(100%);
-    opacity: 0; /* Fade out completely so no letters show */
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(45px);
+    margin-left: 0;
   }
 
   .btn-card-detail:active {
@@ -908,9 +920,13 @@
   }
 
   .btn-submit-mono span {
-    display: block;
-    margin-left: 0.3em;
-    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    max-width: 220px;
+    opacity: 1;
+    margin-left: 0.35rem;
+    transition: max-width 0.3s ease-in-out, opacity 0.25s ease-in-out, transform 0.3s ease-in-out, margin 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .btn-submit-mono svg {
@@ -932,12 +948,14 @@
   }
 
   .btn-submit-mono:hover svg {
-    transform: translateX(3.6em) scale(1.15); /* Removed rotation */
+    transform: scale(1.22); /* Scale only, flex centers the icon automatically */
   }
 
   .btn-submit-mono:hover span {
-    transform: translateX(100%);
-    opacity: 0; /* Fade out completely so no letters show */
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(50px);
+    margin-left: 0;
   }
 
   .btn-submit-mono:active {
