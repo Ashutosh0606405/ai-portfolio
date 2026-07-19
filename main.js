@@ -1,6 +1,7 @@
 /* ==========================================================================
    AS.PORTFOLIO Retro-Futuristic CRT & Chrome Portfolio - Main Controller
    ========================================================================== */
+import { sendContactMessage } from './firebase.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initInteractiveClouds();
@@ -409,19 +410,30 @@ function initContactForm() {
     e.preventDefault();
     const btn = form.querySelector('.btn-submit-mono');
     
+    // Capture user telemetry
+    const name = document.getElementById('form-name').value;
+    const email = document.getElementById('form-email').value;
+    const message = document.getElementById('form-msg').value;
+
     btn.disabled = true;
     btn.textContent = "TRANSMITTING...";
     successLog.innerHTML = "<p>// COMPOSING DATA PACKETS...</p>";
 
-    setTimeout(() => {
-      successLog.innerHTML += "<p>// ROUTING VIA SECURE GATEWAY...</p>";
+    setTimeout(async () => {
+      successLog.innerHTML += "<p>// ROUTING VIA SECURE FIRESTORE GATEWAY...</p>";
       
-      setTimeout(() => {
-        successLog.innerHTML += "<p>// PACKETS DISPATCHED SUCCESSFULLY. TELEMETRY LOGGED.</p>";
-        btn.textContent = "TRANSMIT PACKETS";
-        btn.disabled = false;
+      // Dispatch packet to Cloud Firestore
+      const result = await sendContactMessage(name, email, message);
+      
+      if (result.success) {
+        successLog.innerHTML += `<p>// PACKETS DISPATCHED SUCCESSFULLY. REF ID: <span class="highlight-txt">${result.docId}</span></p>`;
         form.reset();
-      }, 800);
+      } else {
+        successLog.innerHTML += `<p style="color:#d32f2f;">// ERROR: TRANSMISSION FAILED. DETAILS: ${result.error}</p>`;
+      }
+      
+      btn.textContent = "TRANSMIT PACKETS";
+      btn.disabled = false;
     }, 600);
   });
 }
