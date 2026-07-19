@@ -356,9 +356,8 @@
 
   /* Hero Bottom telemetry */
   .hero-footer-grid {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 3rem;
+    display: flex;
+    justify-content: flex-end;
     align-items: flex-end;
     border-top: 1.5px solid var(--color-border);
     padding-top: 1.5rem;
@@ -366,8 +365,7 @@
 
   @media (max-width: 768px) {
     .hero-footer-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+      display: block;
     }
   }
 
