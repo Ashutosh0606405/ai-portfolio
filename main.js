@@ -427,6 +427,13 @@ function initContactForm() {
       
       if (result.success) {
         successLog.innerHTML += `<p>// PACKETS DISPATCHED SUCCESSFULLY. REF ID: <span class="highlight-txt">${result.docId}</span></p>`;
+        if (result.emailSent) {
+          successLog.innerHTML += "<p>// EMAIL NOTIFICATION ROUTED SECURELY.</p>";
+        } else if (result.emailError) {
+          successLog.innerHTML += `<p style="color:#e06666;">// EMAIL ROUTING ERROR: ${result.emailError}</p>`;
+        } else {
+          successLog.innerHTML += "<p>// SYSTEM NOTICE: EMAIL ROUTING BYPASSED (NO KEY CONFIGURED).</p>";
+        }
         form.reset();
       } else {
         successLog.innerHTML += `<p style="color:#d32f2f;">// ERROR: TRANSMISSION FAILED. DETAILS: ${result.error}</p>`;
