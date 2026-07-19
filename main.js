@@ -290,23 +290,25 @@ const projectDetailsDB = {
     liveUrl: "https://mercury-dry-cleaners.vercel.app/",
     codebase: "https://github.com/Ashutosh0606405/mercury-dry-cleaners"
   },
-  "neuroflow": {
-    title: "NeuroFlow",
-    tag: "PYTHON / AI TOOLS",
-    desc: "NeuroFlow allows engineers to design complex multi-agent systems via a visual, canvas-based block editor. Connect models, define logic triggers, and deploy full agent systems with zero setup.",
+  "tinylink": {
+    title: "TinyLink",
+    tag: "FRONTEND / UTILITY",
+    desc: "TinyLink is a sleek, serverless single-page URL shortener and QR code generator. Built as a lightweight utility, it allows developers and creators to shrink long links instantly and download scan-ready QR codes directly to their devices.",
     features: [
-      "Custom node editor using canvas and SVG connectors.",
-      "Real-time step-by-step model execution inspector.",
-      "Direct API code generation for Python/JS deployments."
+      "Serverless client-side parameter parsing and instant redirects.",
+      "High-quality scan-ready QR code generation and direct file downloads.",
+      "Dual database modes: local browser memory fallback or central Cloud Firestore storage."
     ],
-    tech: ["Python", "PyTorch", "FastAPI", "WebAssembly", "Gemini API"],
-    imageText: "NEUROFLOW // ORCHESTRATION",
+    tech: ["HTML5", "CSS3", "JavaScript", "Firebase SDK", "Vercel"],
+    imageText: "TINYLINK // ROUTER_SYS",
     telemetry: {
-      latency: "28ms",
-      coverage: "96.5%",
-      health: "NOMINAL"
+      latency: "12ms",
+      coverage: "98.1%",
+      health: "OPERATIONAL"
     },
-    aiSummary: "Ashutosh architected the node graph editor engine, allowing visual graph representations of LLM pipelines, and wrote a FastAPI code generator to translate visual layouts into deployable code."
+    aiSummary: "Ashutosh engineered the frontend glassmorphism utility system and structured the Firebase Firestore dynamic load pipeline for global data persistence.",
+    liveUrl: "https://url-shortener-ten-mu.vercel.app/",
+    codebase: "https://github.com/Ashutosh0606405/url-shortener"
   }
 };
 
