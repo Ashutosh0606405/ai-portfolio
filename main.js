@@ -270,23 +270,25 @@ const projectDetailsDB = {
     },
     aiSummary: "Ashutosh engineered the WebSocket collaborative layers and optimized Gemini token-streaming pipelines to lower interface lag below 50ms, resolving major real-time sync hurdles."
   },
-  "quantum": {
-    title: "Quantum Ledger",
-    tag: "WEB3 / ANALYTICS",
-    desc: "Quantum Ledger provides real-time analytics for smart contract developers. By pulling live event logs straight from blockchain nodes, it indexes telemetry data to display transaction histories, gas usage optimizations, and system errors.",
+  "mercury": {
+    title: "Mercury Dry Cleaners",
+    tag: "FULL-STACK / BESPOKE",
+    desc: "Mercury Dry Cleaners is a premium, bespoke web application built to streamline concierge cleaning services. It features a luxury landing page, an interactive pickup scheduler, a live stepper status tracker, and a secure operations dashboard for staff management.",
     features: [
-      "Decentralized node connections with fallback providers.",
-      "Optimized charts plotting live contract telemetry.",
-      "Smart-contract vulnerability auditing helpers."
+      "Concierge Pickup Scheduler with modern standards-based validations.",
+      "Visual Stepper order status tracker updating in real-time.",
+      "Operations Staff Control Dashboard secured with session-based authentication."
     ],
-    tech: ["HTML5 Canvas", "Ethers.js", "Web3.js", "Node.js", "Chart.js"],
-    imageText: "QUANTUM_LEDGER // TELEMETRY",
+    tech: ["Node.js", "Express", "MongoDB", "Nodemailer", "Firebase", "Vanilla CSS"],
+    imageText: "MERCURY_DRY_CLEANERS // ACTIVE_SYS",
     telemetry: {
-      latency: "112ms",
-      coverage: "88.6%",
-      health: "SYNCED"
+      latency: "34ms",
+      coverage: "92.8%",
+      health: "OPERATIONAL"
     },
-    aiSummary: "Ashutosh developed the modular Ethers.js integration for telemetry indexing and constructed the high-performance HTML5 Canvas rendering engine for smooth real-time transaction updates."
+    aiSummary: "Ashutosh designed and built the entire database-backed server architecture and constructed the elegant concierge pickup scheduler using modern native CSS validation states.",
+    liveUrl: "https://mercury-dry-cleaners.vercel.app/",
+    codebase: "https://github.com/Ashutosh0606405/mercury-dry-cleaners"
   },
   "neuroflow": {
     title: "NeuroFlow",
@@ -350,7 +352,7 @@ function renderModalContent(data) {
     </div>
     
     <div class="modal-image">
-      <img src="./assets/${data.title.toLowerCase().replace(' ', '_')}.png" alt="${data.title} Mockup Interface" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <img src="./assets/${data.title.toLowerCase().replace(/\s+/g, '_')}.png" alt="${data.title} Mockup Interface" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:rgba(255,255,255,0.05);" class="fallback-mockup-graphic">
         <span>[ MOCKUP: ${data.imageText} ]</span>
       </div>
@@ -393,7 +395,8 @@ function renderModalContent(data) {
     
     <div class="modal-footer">
       <button class="modal-btn" onclick="document.getElementById('project-detail-modal').close()">CLOSE PANEL</button>
-      <a href="https://github.com" target="_blank" class="modal-btn primary">VIEW CODEBASE</a>
+      ${data.liveUrl ? `<a href="${data.liveUrl}" target="_blank" class="modal-btn primary">LAUNCH APP</a>` : ''}
+      <a href="${data.codebase || 'https://github.com'}" target="_blank" class="modal-btn">VIEW CODEBASE</a>
     </div>
   `;
 }
