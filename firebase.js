@@ -15,23 +15,31 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Helper to race a promise with a timeout
+const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), ms));
+
 // Helper function to send contact details to Firestore and Web3Forms email dispatcher
 export async function sendContactMessage(name, email, message) {
   let firestoreId = null;
   let firestoreError = null;
 
-  // 1. Log the entry into Cloud Firestore
+  // 1. Log the entry into Cloud Firestore with a 3.5-second threshold
   try {
-    const docRef = await addDoc(collection(db, 'messages'), {
+    const firestoreWritePromise = addDoc(collection(db, 'messages'), {
       name: name,
       email: email,
       message: message,
       timestamp: serverTimestamp()
     });
+
+    // Race write promise against a 3500ms timeout
+    const docRef = await Promise.race([firestoreWritePromise, timeout(3500)]);
     firestoreId = docRef.id;
   } catch (error) {
-    console.error("Firestore database log failed: ", error);
-    firestoreError = error.message;
+    console.error("Firestore database log failed or timed out: ", error);
+    firestoreError = error.message === "Timeout" 
+      ? "Database response latency threshold exceeded (Timeout)." 
+      : error.message;
   }
 
   // 2. Dispatch the email notification using Web3Forms API
@@ -67,13 +75,14 @@ export async function sendContactMessage(name, email, message) {
     }
   }
 
-  // Return final status report
-  if (firestoreId) {
+  // Return final status report (Success if EITHER Firestore logged OR Email was dispatched)
+  if (firestoreId || emailSent) {
     return {
       success: true,
       docId: firestoreId,
       emailSent: emailSent,
-      emailError: emailError
+      emailError: emailError,
+      firestoreError: firestoreError
     };
   } else {
     return {

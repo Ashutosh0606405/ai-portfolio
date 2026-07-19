@@ -426,7 +426,12 @@ function initContactForm() {
       const result = await sendContactMessage(name, email, message);
       
       if (result.success) {
-        successLog.innerHTML += `<p>// PACKETS DISPATCHED SUCCESSFULLY. REF ID: <span class="highlight-txt">${result.docId}</span></p>`;
+        if (result.docId) {
+          successLog.innerHTML += `<p>// PACKETS DISPATCHED SUCCESSFULLY. REF ID: <span class="highlight-txt">${result.docId}</span></p>`;
+        } else {
+          successLog.innerHTML += `<p style="color:#e06666;">// DATABASE LOG BYPASSED: ${result.firestoreError}</p>`;
+        }
+        
         if (result.emailSent) {
           successLog.innerHTML += "<p>// EMAIL NOTIFICATION ROUTED SECURELY.</p>";
         } else if (result.emailError) {
