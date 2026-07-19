@@ -43,7 +43,7 @@ export async function sendContactMessage(name, email, message) {
   }
 
   // 2. Dispatch the email notification using Web3Forms API
-  const web3FormsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+  const web3FormsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "25740dd1-4098-4cfb-9d48-b531028d8a6f";
   let emailSent = false;
   let emailError = null;
 
