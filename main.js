@@ -268,7 +268,9 @@ const projectDetailsDB = {
       coverage: "94.2%",
       health: "ACTIVE"
     },
-    aiSummary: "Ashutosh engineered the WebSocket collaborative layers and optimized Gemini token-streaming pipelines to lower interface lag below 50ms, resolving major real-time sync hurdles."
+    aiSummary: "Ashutosh engineered the WebSocket collaborative layers and optimized Gemini token-streaming pipelines to lower interface lag below 50ms, resolving major real-time sync hurdles.",
+    liveUrl: "https://ai-powered-assignment-solver.vercel.app/",
+    codebase: "https://github.com/Ashutosh0606405/ai-powered-Assignment-solver-"
   },
   "mercury": {
     title: "Mercury Dry Cleaners",
