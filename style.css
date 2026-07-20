@@ -1297,3 +1297,103 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 }
+
+/* ==========================================================================
+   Responsive Overrides for Mobile & Tablet
+   ========================================================================== */
+@layer components {
+  @media (max-width: 1024px) {
+    .modal-footer {
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .global-header {
+      padding: 0 1.25rem;
+    }
+    
+    .logo-txt {
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      gap: 0.6rem;
+    }
+
+    .nav-item {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.72rem;
+    }
+
+    .nav-item .svg-wrapper-1 {
+      display: none !important;
+    }
+
+    /* Disable hover-collapse on mobile/tablet touch screens for stability */
+    .nav-item span {
+      margin-left: 0 !important;
+      max-width: 150px !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .nav-item:hover span,
+    .btn-card-detail:hover span,
+    .btn-submit-mono:hover span {
+      max-width: 250px !important;
+      opacity: 1 !important;
+      transform: none !important;
+      margin-left: 0.35rem !important;
+    }
+
+    .nav-item:hover .svg-wrapper,
+    .btn-card-detail:hover .svg-wrapper,
+    .btn-submit-mono:hover .svg-wrapper {
+      transform: none !important;
+    }
+    
+    .btn-card-detail span,
+    .btn-submit-mono span {
+      margin-left: 0.35rem !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .global-header {
+      padding: 0 0.75rem;
+    }
+
+    .logo-txt {
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      gap: 0.4rem;
+    }
+
+    .nav-item {
+      padding: 0.25rem 0.45rem;
+      font-size: 0.68rem;
+    }
+
+    .contact-box {
+      padding: 1.5rem;
+    }
+
+    .modal-box {
+      padding: 1.5rem;
+    }
+    
+    .modal-footer {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+    
+    .modal-footer .modal-btn {
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
